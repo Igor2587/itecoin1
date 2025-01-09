@@ -952,8 +952,8 @@ Allekirjoitus on mahdollista vain 'legacy'-tyyppisillä osoitteilla.</translatio
         <translation type="unfinished">(%1 lukittu)</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Saattaa vaihdella +/- %1 satoshia per syöte.</translation>
+        <source>Can vary +/- %1 Igor(s) per input.</source>
+        <translation type="unfinished">Saattaa vaihdella +/- %1 Igora per syöte.</translation>
     </message>
     <message>
         <source>(no label)</source>

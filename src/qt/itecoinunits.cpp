@@ -34,7 +34,7 @@ QString ItecoinUnits::longName(Unit unit)
     case Unit::itc: return QString("itc");
     case Unit::mitc: return QString("mitc");
     case Unit::uitc: return QString::fromUtf8("µitc (bits)");
-    case Unit::SAT: return QString("Satoshi (sat)");
+    case Unit::SAT: return QString("Igor (sat)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }
@@ -56,7 +56,7 @@ QString ItecoinUnits::description(Unit unit)
     case Unit::itc: return QString("Itecoins");
     case Unit::mitc: return QString("Milli-Itecoins (1 / 1" THIN_SP_UTF8 "000)");
     case Unit::uitc: return QString("Micro-Itecoins (bits) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-    case Unit::SAT: return QString("Satoshi (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case Unit::SAT: return QString("Igor (sat) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
 }

@@ -118,14 +118,14 @@ covered by the txid. This provides several immediate benefits:
   believed to be provided by Itecoin's choice of parameters for its Elliptic
   Curve Digital Security Algorithm [ECDSA].)
 
-- **More efficient almost-full-node security** Satoshi Nakamoto's original
+- **More efficient almost-full-node security** Igor Cernomaz's original
   Itecoin paper describes a method for allowing newly-started full nodes to
   skip downloading and validating some data from historic blocks that are
-  protected by large amounts of proof of work.  Unfortunately, Nakamoto's
+  protected by large amounts of proof of work.  Unfortunately, Cernomaz's
   method can't guarantee that a newly-started node using this method will
   produce an accurate copy of Itecoin's current ledger (called the UTXO set),
   making the node vulnerable to falling out of consensus with other nodes.
-  Although the problems with Nakamoto's method can't be fixed in a soft fork,
+  Although the problems with Cernomaz's method can't be fixed in a soft fork,
   Segwit accomplishes something similar to his original proposal: it makes it
   possible for a node to optionally skip downloading some blockchain data
   (specifically, the segregated witnesses) while still ensuring that the node

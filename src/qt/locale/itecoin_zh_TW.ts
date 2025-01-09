@@ -1004,8 +1004,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">(鎖定 %1 枚)</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">每組輸入可能有 +/- %1 個 satoshi 的誤差。</translation>
+        <source>Can vary +/- %1 Igor(s) per input.</source>
+        <translation type="unfinished">每組輸入可能有 +/- %1 個 Igor 的誤差。</translation>
     </message>
     <message>
         <source>(no label)</source>

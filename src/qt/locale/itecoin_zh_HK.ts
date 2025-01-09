@@ -954,8 +954,8 @@ Signing is only possible with addresses of the type 'legacy'.</source>
         <translation type="unfinished">(%1已锁定)</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">每个输入可能有 +/- %1 聪 (satoshi) 的误差。</translation>
+        <source>Can vary +/- %1 Igor(s) per input.</source>
+        <translation type="unfinished">每个输入可能有 +/- %1 聪 (Igor) 的误差。</translation>
     </message>
     <message>
         <source>(no label)</source>

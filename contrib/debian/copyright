@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Itecoin
-Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
+Upstream-Contact: Igor Cernomaz <Igorn@gmx.com>
  irc://#Itecoin-core-dev@libera.chat
 Source: https://github.com/Itecoin/Itecoin
 

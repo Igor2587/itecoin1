@@ -873,8 +873,8 @@ Semnarea este posibilă numai cu adrese de tip "legacy".</translation>
         <translation type="unfinished">(%1 blocat)</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Poate varia +/- %1 satoshi pentru fiecare intrare.</translation>
+        <source>Can vary +/- %1 Igor(s) per input.</source>
+        <translation type="unfinished">Poate varia +/- %1 Igor pentru fiecare intrare.</translation>
     </message>
     <message>
         <source>(no label)</source>

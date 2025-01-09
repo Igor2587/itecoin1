@@ -774,8 +774,8 @@ Pasirašymas galimas tik su 'legacy' tipo adresais.</translation>
         <translation type="unfinished">(%1 užrakinta)</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 satoshi(s) per input.</source>
-        <translation type="unfinished">Gali svyruoti nuo +/-%1 satoshi(-ų) vienam įvedimui.</translation>
+        <source>Can vary +/- %1 Igor(s) per input.</source>
+        <translation type="unfinished">Gali svyruoti nuo +/-%1 Igor(-ų) vienam įvedimui.</translation>
     </message>
     <message>
         <source>(no label)</source>

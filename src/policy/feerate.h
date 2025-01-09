@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2010 Igor Cernomaz
 // Copyright (c) 2009-2022 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -27,52 +27,52 @@ enum class FeeEstimateMode {
 };
 
 /**
- * Fee rate in satoshis per kilovirtualbyte: CAmount / kvB
+ * Fee rate in Igors per kilovirtualbyte: CAmount / kvB
  */
 class CFeeRate
 {
 private:
-    /** Fee rate in sat/kvB (satoshis per 1000 virtualbytes) */
-    CAmount nSatoshisPerK;
+    /** Fee rate in sat/kvB (Igors per 1000 virtualbytes) */
+    CAmount nIgorsPerK;
 
 public:
-    /** Fee rate of 0 satoshis per kvB */
-    CFeeRate() : nSatoshisPerK(0) { }
+    /** Fee rate of 0 Igors per kvB */
+    CFeeRate() : nIgorsPerK(0) { }
     template<typename I>
-    explicit CFeeRate(const I _nSatoshisPerK): nSatoshisPerK(_nSatoshisPerK) {
+    explicit CFeeRate(const I _nIgorsPerK): nIgorsPerK(_nIgorsPerK) {
         // We've previously had bugs creep in from silent double->int conversion...
         static_assert(std::is_integral<I>::value, "CFeeRate should be used without floats");
     }
 
     /**
-     * Construct a fee rate from a fee in satoshis and a vsize in vB.
+     * Construct a fee rate from a fee in Igors and a vsize in vB.
      *
-     * param@[in]   nFeePaid    The fee paid by a transaction, in satoshis
+     * param@[in]   nFeePaid    The fee paid by a transaction, in Igors
      * param@[in]   num_bytes   The vsize of a transaction, in vbytes
      */
     CFeeRate(const CAmount& nFeePaid, uint32_t num_bytes);
 
     /**
-     * Return the fee in satoshis for the given vsize in vbytes.
-     * If the calculated fee would have fractional satoshis, then the
-     * returned fee will always be rounded up to the nearest satoshi.
+     * Return the fee in Igors for the given vsize in vbytes.
+     * If the calculated fee would have fractional Igors, then the
+     * returned fee will always be rounded up to the nearest Igor.
      */
     CAmount GetFee(uint32_t num_bytes) const;
 
     /**
-     * Return the fee in satoshis for a vsize of 1000 vbytes
+     * Return the fee in Igors for a vsize of 1000 vbytes
      */
-    CAmount GetFeePerK() const { return nSatoshisPerK; }
-    friend bool operator<(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK < b.nSatoshisPerK; }
-    friend bool operator>(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK > b.nSatoshisPerK; }
-    friend bool operator==(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK == b.nSatoshisPerK; }
-    friend bool operator<=(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK <= b.nSatoshisPerK; }
-    friend bool operator>=(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK >= b.nSatoshisPerK; }
-    friend bool operator!=(const CFeeRate& a, const CFeeRate& b) { return a.nSatoshisPerK != b.nSatoshisPerK; }
-    CFeeRate& operator+=(const CFeeRate& a) { nSatoshisPerK += a.nSatoshisPerK; return *this; }
+    CAmount GetFeePerK() const { return nIgorsPerK; }
+    friend bool operator<(const CFeeRate& a, const CFeeRate& b) { return a.nIgorsPerK < b.nIgorsPerK; }
+    friend bool operator>(const CFeeRate& a, const CFeeRate& b) { return a.nIgorsPerK > b.nIgorsPerK; }
+    friend bool operator==(const CFeeRate& a, const CFeeRate& b) { return a.nIgorsPerK == b.nIgorsPerK; }
+    friend bool operator<=(const CFeeRate& a, const CFeeRate& b) { return a.nIgorsPerK <= b.nIgorsPerK; }
+    friend bool operator>=(const CFeeRate& a, const CFeeRate& b) { return a.nIgorsPerK >= b.nIgorsPerK; }
+    friend bool operator!=(const CFeeRate& a, const CFeeRate& b) { return a.nIgorsPerK != b.nIgorsPerK; }
+    CFeeRate& operator+=(const CFeeRate& a) { nIgorsPerK += a.nIgorsPerK; return *this; }
     std::string ToString(const FeeEstimateMode& fee_estimate_mode = FeeEstimateMode::itc_KVB) const;
 
-    SERIALIZE_METHODS(CFeeRate, obj) { READWRITE(obj.nSatoshisPerK); }
+    SERIALIZE_METHODS(CFeeRate, obj) { READWRITE(obj.nIgorsPerK); }
 };
 
 #endif // Itecoin_POLICY_FEERATE_H

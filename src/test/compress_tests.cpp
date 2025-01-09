@@ -19,7 +19,7 @@
 // amounts 1 .. 10000
 #define NUM_MULTIPLES_1itc 10000
 
-// amounts 50 .. 21000000
+// amounts 50 .. 22000000
 #define NUM_MULTIPLES_50itc 420000
 
 BOOST_FIXTURE_TEST_SUITE(compress_tests, BasicTestingSetup)
