@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-systemd: bitcoind.service
-Upstart: bitcoind.conf
-OpenRC:  bitcoind.openrc
-         bitcoind.openrcconf
-CentOS:  bitcoind.init
-macOS:   org.bitcoin.bitcoind.plist
+systemd: Itecoind.service
+Upstart: Itecoind.conf
+OpenRC:  Itecoind.openrc
+         Itecoind.openrcconf
+CentOS:  Itecoind.init
+macOS:   org.Itecoin.Itecoind.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

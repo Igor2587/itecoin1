@@ -1,9 +1,9 @@
-// Copyright (c) 2023 The Bitcoin Core developers
+// Copyright (c) 2023 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_COMMON_ARGS_H
-#define BITCOIN_COMMON_ARGS_H
+#ifndef Itecoin_COMMON_ARGS_H
+#define Itecoin_COMMON_ARGS_H
 
 #include <common/settings.h>
 #include <compat/compat.h>
@@ -23,8 +23,8 @@
 
 class ArgsManager;
 
-extern const char * const BITCOIN_CONF_FILENAME;
-extern const char * const BITCOIN_SETTINGS_FILENAME;
+extern const char * const Itecoin_CONF_FILENAME;
+extern const char * const Itecoin_SETTINGS_FILENAME;
 
 // Return true if -datadir option points to a valid directory or is not specified.
 bool CheckDataDirOption(const ArgsManager& args);
@@ -480,4 +480,4 @@ private:
 #endif
 } // namespace common
 
-#endif // BITCOIN_COMMON_ARGS_H
+#endif // Itecoin_COMMON_ARGS_H

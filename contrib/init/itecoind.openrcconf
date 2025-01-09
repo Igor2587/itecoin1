@@ -1,0 +1,33 @@
+# /etc/conf.d/Itecoind: config file for /etc/init.d/Itecoind
+
+# Config file location
+#ItecoinD_CONFIGFILE="/etc/Itecoin/Itecoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $ItecoinD_USER)
+#ItecoinD_PIDDIR="/var/run/Itecoind"
+
+# What filename to give the pidfile
+#ItecoinD_PIDFILE="${ItecoinD_PIDDIR}/Itecoind.pid"
+
+# Where to write Itecoind data (be mindful that the blockchain is large)
+#ItecoinD_DATADIR="/var/lib/Itecoind"
+
+# User and group to own Itecoind process
+#ItecoinD_USER="Itecoin"
+#ItecoinD_GROUP="Itecoin"
+
+# Path to Itecoind executable
+#ItecoinD_BIN="/usr/bin/Itecoind"
+
+# Nice value to run Itecoind under
+#ItecoinD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#ItecoinD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for Itecoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+ItecoinD_SIGTERM_TIMEOUT=600

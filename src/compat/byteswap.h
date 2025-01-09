@@ -1,12 +1,12 @@
-// Copyright (c) 2014-2022 The Bitcoin Core developers
+// Copyright (c) 2014-2022 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_COMPAT_BYTESWAP_H
-#define BITCOIN_COMPAT_BYTESWAP_H
+#ifndef Itecoin_COMPAT_BYTESWAP_H
+#define Itecoin_COMPAT_BYTESWAP_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#include <config/Itecoin-config.h>
 #endif
 
 #include <cstdint>
@@ -56,4 +56,4 @@ inline uint64_t bswap_64(uint64_t x)
 
 #endif // defined(MAC_OSX)
 
-#endif // BITCOIN_COMPAT_BYTESWAP_H
+#endif // Itecoin_COMPAT_BYTESWAP_H

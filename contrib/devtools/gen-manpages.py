@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2022 The Bitcoin Core developers
+# Copyright (c) 2022 The Itecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 import os
@@ -8,12 +8,12 @@ import sys
 import tempfile
 
 BINARIES = [
-'src/bitcoind',
-'src/bitcoin-cli',
-'src/bitcoin-tx',
-'src/bitcoin-wallet',
-'src/bitcoin-util',
-'src/qt/bitcoin-qt',
+'src/Itecoind',
+'src/Itecoin-cli',
+'src/Itecoin-tx',
+'src/Itecoin-wallet',
+'src/Itecoin-util',
+'src/qt/Itecoin-qt',
 ]
 
 # Paths to external utilities.

@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2022 The Bitcoin Core developers
+// Copyright (c) 2011-2022 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,7 +9,7 @@
 #include <key_io.h>
 #include <node/psbt.h>
 #include <policy/policy.h>
-#include <qt/bitcoinunits.h>
+#include <qt/Itecoinunits.h>
 #include <qt/forms/ui_psbtoperationsdialog.h>
 #include <qt/guiutil.h>
 #include <qt/optionsmodel.h>
@@ -147,7 +147,7 @@ void PSBTOperationsDialog::saveTransaction() {
         }
         CTxDestination address;
         ExtractDestination(out.scriptPubKey, address);
-        QString amount = BitcoinUnits::format(m_client_model->getOptionsModel()->getDisplayUnit(), out.nValue);
+        QString amount = ItecoinUnits::format(m_client_model->getOptionsModel()->getDisplayUnit(), out.nValue);
         QString address_str = QString::fromStdString(EncodeDestination(address));
         filename_suggestion.append(address_str + "-" + amount);
         first = false;
@@ -180,7 +180,7 @@ std::string PSBTOperationsDialog::renderTransaction(const PartiallySignedTransac
         ExtractDestination(out.scriptPubKey, address);
         totalAmount += out.nValue;
         tx_description.append(tr(" * Sends %1 to %2")
-            .arg(BitcoinUnits::formatWithUnit(BitcoinUnit::BTC, out.nValue))
+            .arg(ItecoinUnits::formatWithUnit(ItecoinUnit::itc, out.nValue))
             .arg(QString::fromStdString(EncodeDestination(address))));
         // Check if the address is one of ours
         if (m_wallet_model != nullptr && m_wallet_model->wallet().txoutIsMine(out)) tx_description.append(" (" + tr("own address") + ")");
@@ -194,19 +194,19 @@ std::string PSBTOperationsDialog::renderTransaction(const PartiallySignedTransac
         tx_description.append(tr("Unable to calculate transaction fee or total transaction amount."));
     } else {
         tx_description.append(tr("Pays transaction fee: "));
-        tx_description.append(BitcoinUnits::formatWithUnit(BitcoinUnit::BTC, *analysis.fee));
+        tx_description.append(ItecoinUnits::formatWithUnit(ItecoinUnit::itc, *analysis.fee));
 
         // add total amount in all subdivision units
         tx_description.append("<hr />");
         QStringList alternativeUnits;
-        for (const BitcoinUnits::Unit u : BitcoinUnits::availableUnits())
+        for (const ItecoinUnits::Unit u : ItecoinUnits::availableUnits())
         {
             if(u != m_client_model->getOptionsModel()->getDisplayUnit()) {
-                alternativeUnits.append(BitcoinUnits::formatHtmlWithUnit(u, totalAmount));
+                alternativeUnits.append(ItecoinUnits::formatHtmlWithUnit(u, totalAmount));
             }
         }
         tx_description.append(QString("<b>%1</b>: <b>%2</b>").arg(tr("Total Amount"))
-            .arg(BitcoinUnits::formatHtmlWithUnit(m_client_model->getOptionsModel()->getDisplayUnit(), totalAmount)));
+            .arg(ItecoinUnits::formatHtmlWithUnit(m_client_model->getOptionsModel()->getDisplayUnit(), totalAmount)));
         tx_description.append(QString("<br /><span style='font-size:10pt; font-weight:normal;'>(=%1)</span>")
             .arg(alternativeUnits.join(" " + tr("or") + " ")));
     }

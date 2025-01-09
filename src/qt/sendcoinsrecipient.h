@@ -1,12 +1,12 @@
-// Copyright (c) 2011-2021 The Bitcoin Core developers
+// Copyright (c) 2011-2021 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_SENDCOINSRECIPIENT_H
-#define BITCOIN_QT_SENDCOINSRECIPIENT_H
+#ifndef Itecoin_QT_SENDCOINSRECIPIENT_H
+#define Itecoin_QT_SENDCOINSRECIPIENT_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#include <config/Itecoin-config.h>
 #endif
 
 #include <consensus/amount.h>
@@ -62,4 +62,4 @@ public:
     }
 };
 
-#endif // BITCOIN_QT_SENDCOINSRECIPIENT_H
+#endif // Itecoin_QT_SENDCOINSRECIPIENT_H

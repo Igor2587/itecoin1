@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2022 The Bitcoin Core developers
+// Copyright (c) 2009-2022 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_KERNEL_MEMPOOL_ENTRY_H
-#define BITCOIN_KERNEL_MEMPOOL_ENTRY_H
+#ifndef Itecoin_KERNEL_MEMPOOL_ENTRY_H
+#define Itecoin_KERNEL_MEMPOOL_ENTRY_H
 
 #include <consensus/amount.h>
 #include <consensus/validation.h>
@@ -176,4 +176,4 @@ public:
     mutable Epoch::Marker m_epoch_marker; //!< epoch when last touched, useful for graph algorithms
 };
 
-#endif // BITCOIN_KERNEL_MEMPOOL_ENTRY_H
+#endif // Itecoin_KERNEL_MEMPOOL_ENTRY_H

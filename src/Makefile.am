@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Copyright (c) 2013-2016 The Itecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -24,49 +24,49 @@ check_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-BITCOIN_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT)
+Itecoin_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT)
 
-LIBBITCOIN_NODE=libbitcoin_node.a
-LIBBITCOIN_COMMON=libbitcoin_common.a
-LIBBITCOIN_CONSENSUS=libbitcoin_consensus.a
-LIBBITCOIN_CLI=libbitcoin_cli.a
-LIBBITCOIN_UTIL=libbitcoin_util.a
-LIBBITCOIN_CRYPTO_BASE=crypto/libbitcoin_crypto_base.la
-LIBBITCOINQT=qt/libbitcoinqt.a
+LIBItecoin_NODE=libItecoin_node.a
+LIBItecoin_COMMON=libItecoin_common.a
+LIBItecoin_CONSENSUS=libItecoin_consensus.a
+LIBItecoin_CLI=libItecoin_cli.a
+LIBItecoin_UTIL=libItecoin_util.a
+LIBItecoin_CRYPTO_BASE=crypto/libItecoin_crypto_base.la
+LIBItecoinQT=qt/libItecoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libbitcoin_zmq.a
+LIBItecoin_ZMQ=libItecoin_zmq.a
 endif
-if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libbitcoinconsensus.la
+if BUILD_Itecoin_LIBS
+LIBItecoinCONSENSUS=libItecoinconsensus.la
 endif
-if BUILD_BITCOIN_KERNEL_LIB
-LIBBITCOINKERNEL=libbitcoinkernel.la
+if BUILD_Itecoin_KERNEL_LIB
+LIBItecoinKERNEL=libItecoinkernel.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libbitcoin_wallet.a
-LIBBITCOIN_WALLET_TOOL=libbitcoin_wallet_tool.a
+LIBItecoin_WALLET=libItecoin_wallet.a
+LIBItecoin_WALLET_TOOL=libItecoin_wallet_tool.a
 endif
 
-LIBBITCOIN_CRYPTO = $(LIBBITCOIN_CRYPTO_BASE)
+LIBItecoin_CRYPTO = $(LIBItecoin_CRYPTO_BASE)
 if ENABLE_SSE41
-LIBBITCOIN_CRYPTO_SSE41 = crypto/libbitcoin_crypto_sse41.la
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SSE41)
+LIBItecoin_CRYPTO_SSE41 = crypto/libItecoin_crypto_sse41.la
+LIBItecoin_CRYPTO += $(LIBItecoin_CRYPTO_SSE41)
 endif
 if ENABLE_AVX2
-LIBBITCOIN_CRYPTO_AVX2 = crypto/libbitcoin_crypto_avx2.la
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_AVX2)
+LIBItecoin_CRYPTO_AVX2 = crypto/libItecoin_crypto_avx2.la
+LIBItecoin_CRYPTO += $(LIBItecoin_CRYPTO_AVX2)
 endif
 if ENABLE_X86_SHANI
-LIBBITCOIN_CRYPTO_X86_SHANI = crypto/libbitcoin_crypto_x86_shani.la
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_X86_SHANI)
+LIBItecoin_CRYPTO_X86_SHANI = crypto/libItecoin_crypto_x86_shani.la
+LIBItecoin_CRYPTO += $(LIBItecoin_CRYPTO_X86_SHANI)
 endif
 if ENABLE_ARM_SHANI
-LIBBITCOIN_CRYPTO_ARM_SHANI = crypto/libbitcoin_crypto_arm_shani.la
-LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_ARM_SHANI)
+LIBItecoin_CRYPTO_ARM_SHANI = crypto/libItecoin_crypto_arm_shani.la
+LIBItecoin_CRYPTO += $(LIBItecoin_CRYPTO_ARM_SHANI)
 endif
-noinst_LTLIBRARIES += $(LIBBITCOIN_CRYPTO)
+noinst_LTLIBRARIES += $(LIBItecoin_CRYPTO)
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
@@ -74,49 +74,49 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_NODE) \
-  $(LIBBITCOIN_CLI) \
-  $(LIBBITCOIN_IPC) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_WALLET_TOOL) \
-  $(LIBBITCOIN_ZMQ)
+  $(LIBItecoin_UTIL) \
+  $(LIBItecoin_COMMON) \
+  $(LIBItecoin_CONSENSUS) \
+  $(LIBItecoin_NODE) \
+  $(LIBItecoin_CLI) \
+  $(LIBItecoin_IPC) \
+  $(LIBItecoin_WALLET) \
+  $(LIBItecoin_WALLET_TOOL) \
+  $(LIBItecoin_ZMQ)
 
-if BUILD_BITCOIND
-  bin_PROGRAMS += bitcoind
+if BUILD_ItecoinD
+  bin_PROGRAMS += Itecoind
 endif
 
-if BUILD_BITCOIN_NODE
-  bin_PROGRAMS += bitcoin-node
+if BUILD_Itecoin_NODE
+  bin_PROGRAMS += Itecoin-node
 endif
 
-if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += bitcoin-cli
+if BUILD_Itecoin_CLI
+  bin_PROGRAMS += Itecoin-cli
 endif
 
-if BUILD_BITCOIN_TX
-  bin_PROGRAMS += bitcoin-tx
+if BUILD_Itecoin_TX
+  bin_PROGRAMS += Itecoin-tx
 endif
 
 if ENABLE_WALLET
-if BUILD_BITCOIN_WALLET
-  bin_PROGRAMS += bitcoin-wallet
+if BUILD_Itecoin_WALLET
+  bin_PROGRAMS += Itecoin-wallet
 endif
 endif
 
-if BUILD_BITCOIN_UTIL
-  bin_PROGRAMS += bitcoin-util
+if BUILD_Itecoin_UTIL
+  bin_PROGRAMS += Itecoin-util
 endif
 
-if BUILD_BITCOIN_CHAINSTATE
-  bin_PROGRAMS += bitcoin-chainstate
+if BUILD_Itecoin_CHAINSTATE
+  bin_PROGRAMS += Itecoin-chainstate
 endif
 
 .PHONY: FORCE check-symbols check-security
-# bitcoin core #
-BITCOIN_CORE_H = \
+# Itecoin core #
+Itecoin_CORE_H = \
   addresstype.h \
   addrdb.h \
   addrman.h \
@@ -372,12 +372,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	$(AM_V_GEN) $(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
+libItecoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # node #
-libbitcoin_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(LEVELDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libbitcoin_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_node_a_SOURCES = \
+libItecoin_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(LEVELDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libItecoin_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_node_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   banman.cpp \
@@ -467,22 +467,22 @@ libbitcoin_node_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(BITCOIN_CORE_H)
+  $(Itecoin_CORE_H)
 
 if ENABLE_WALLET
-libbitcoin_node_a_SOURCES += wallet/init.cpp
-libbitcoin_node_a_CPPFLAGS += $(BDB_CPPFLAGS)
+libItecoin_node_a_SOURCES += wallet/init.cpp
+libItecoin_node_a_CPPFLAGS += $(BDB_CPPFLAGS)
 endif
 if !ENABLE_WALLET
-libbitcoin_node_a_SOURCES += dummywallet.cpp
+libItecoin_node_a_SOURCES += dummywallet.cpp
 endif
 #
 
 # zmq #
 if ENABLE_ZMQ
-libbitcoin_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libbitcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_zmq_a_SOURCES = \
+libItecoin_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(ZMQ_CFLAGS)
+libItecoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp \
@@ -492,9 +492,9 @@ endif
 #
 
 # wallet #
-libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(BDB_CPPFLAGS) $(SQLITE_CFLAGS)
-libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_wallet_a_SOURCES = \
+libItecoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(BOOST_CPPFLAGS) $(BDB_CPPFLAGS) $(SQLITE_CFLAGS)
+libItecoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_wallet_a_SOURCES = \
   wallet/coincontrol.cpp \
   wallet/context.cpp \
   wallet/crypter.cpp \
@@ -522,35 +522,35 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
-  $(BITCOIN_CORE_H)
+  $(Itecoin_CORE_H)
 
 if USE_SQLITE
-libbitcoin_wallet_a_SOURCES += wallet/sqlite.cpp
+libItecoin_wallet_a_SOURCES += wallet/sqlite.cpp
 endif
 if USE_BDB
-libbitcoin_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
+libItecoin_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
 endif
 #
 
 # wallet tool #
-libbitcoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-libbitcoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_wallet_tool_a_SOURCES = \
+libItecoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(BOOST_CPPFLAGS)
+libItecoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_wallet_tool_a_SOURCES = \
   wallet/wallettool.cpp \
-  $(BITCOIN_CORE_H)
+  $(Itecoin_CORE_H)
 #
 
 # crypto #
-crypto_libbitcoin_crypto_base_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libItecoin_crypto_base_la_CPPFLAGS = $(AM_CPPFLAGS)
 
 # Specify -static in both CXXFLAGS and LDFLAGS so libtool will only build a
 # static version of this library. We don't need a dynamic version, and a dynamic
 # version can't be used on windows anyway because the library doesn't currently
 # export DLL symbols.
-crypto_libbitcoin_crypto_base_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitcoin_crypto_base_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libItecoin_crypto_base_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libItecoin_crypto_base_la_LDFLAGS = $(AM_LDFLAGS) -static
 
-crypto_libbitcoin_crypto_base_la_SOURCES = \
+crypto_libItecoin_crypto_base_la_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -582,50 +582,50 @@ crypto_libbitcoin_crypto_base_la_SOURCES = \
   crypto/siphash.h
 
 if USE_ASM
-crypto_libbitcoin_crypto_base_la_SOURCES += crypto/sha256_sse4.cpp
+crypto_libItecoin_crypto_base_la_SOURCES += crypto/sha256_sse4.cpp
 endif
 
-# See explanation for -static in crypto_libbitcoin_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libItecoin_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitcoin_crypto_sse41_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitcoin_crypto_sse41_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitcoin_crypto_sse41_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitcoin_crypto_sse41_la_CXXFLAGS += $(SSE41_CXXFLAGS)
-crypto_libbitcoin_crypto_sse41_la_CPPFLAGS += -DENABLE_SSE41
-crypto_libbitcoin_crypto_sse41_la_SOURCES = crypto/sha256_sse41.cpp
+crypto_libItecoin_crypto_sse41_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libItecoin_crypto_sse41_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libItecoin_crypto_sse41_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libItecoin_crypto_sse41_la_CXXFLAGS += $(SSE41_CXXFLAGS)
+crypto_libItecoin_crypto_sse41_la_CPPFLAGS += -DENABLE_SSE41
+crypto_libItecoin_crypto_sse41_la_SOURCES = crypto/sha256_sse41.cpp
 
-# See explanation for -static in crypto_libbitcoin_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libItecoin_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitcoin_crypto_avx2_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitcoin_crypto_avx2_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitcoin_crypto_avx2_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitcoin_crypto_avx2_la_CXXFLAGS += $(AVX2_CXXFLAGS)
-crypto_libbitcoin_crypto_avx2_la_CPPFLAGS += -DENABLE_AVX2
-crypto_libbitcoin_crypto_avx2_la_SOURCES = crypto/sha256_avx2.cpp
+crypto_libItecoin_crypto_avx2_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libItecoin_crypto_avx2_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libItecoin_crypto_avx2_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libItecoin_crypto_avx2_la_CXXFLAGS += $(AVX2_CXXFLAGS)
+crypto_libItecoin_crypto_avx2_la_CPPFLAGS += -DENABLE_AVX2
+crypto_libItecoin_crypto_avx2_la_SOURCES = crypto/sha256_avx2.cpp
 
-# See explanation for -static in crypto_libbitcoin_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libItecoin_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitcoin_crypto_x86_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitcoin_crypto_x86_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitcoin_crypto_x86_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitcoin_crypto_x86_shani_la_CXXFLAGS += $(X86_SHANI_CXXFLAGS)
-crypto_libbitcoin_crypto_x86_shani_la_CPPFLAGS += -DENABLE_X86_SHANI
-crypto_libbitcoin_crypto_x86_shani_la_SOURCES = crypto/sha256_x86_shani.cpp
+crypto_libItecoin_crypto_x86_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libItecoin_crypto_x86_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libItecoin_crypto_x86_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libItecoin_crypto_x86_shani_la_CXXFLAGS += $(X86_SHANI_CXXFLAGS)
+crypto_libItecoin_crypto_x86_shani_la_CPPFLAGS += -DENABLE_X86_SHANI
+crypto_libItecoin_crypto_x86_shani_la_SOURCES = crypto/sha256_x86_shani.cpp
 
-# See explanation for -static in crypto_libbitcoin_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libItecoin_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitcoin_crypto_arm_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitcoin_crypto_arm_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitcoin_crypto_arm_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitcoin_crypto_arm_shani_la_CXXFLAGS += $(ARM_SHANI_CXXFLAGS)
-crypto_libbitcoin_crypto_arm_shani_la_CPPFLAGS += -DENABLE_ARM_SHANI
-crypto_libbitcoin_crypto_arm_shani_la_SOURCES = crypto/sha256_arm_shani.cpp
+crypto_libItecoin_crypto_arm_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libItecoin_crypto_arm_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libItecoin_crypto_arm_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libItecoin_crypto_arm_shani_la_CXXFLAGS += $(ARM_SHANI_CXXFLAGS)
+crypto_libItecoin_crypto_arm_shani_la_CPPFLAGS += -DENABLE_ARM_SHANI
+crypto_libItecoin_crypto_arm_shani_la_SOURCES = crypto/sha256_arm_shani.cpp
 #
 
 # consensus #
-libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_consensus_a_SOURCES = \
+libItecoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+libItecoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_consensus_a_SOURCES = \
   arith_uint256.cpp \
   arith_uint256.h \
   consensus/amount.h \
@@ -643,7 +643,7 @@ libbitcoin_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/bitcoinconsensus.cpp \
+  script/Itecoinconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -661,9 +661,9 @@ libbitcoin_consensus_a_SOURCES = \
 #
 
 # common #
-libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_common_a_SOURCES = \
+libItecoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(BOOST_CPPFLAGS)
+libItecoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_common_a_SOURCES = \
   addresstype.cpp \
   base58.cpp \
   bech32.cpp \
@@ -707,18 +707,18 @@ libbitcoin_common_a_SOURCES = \
   script/signingprovider.cpp \
   script/solver.cpp \
   warnings.cpp \
-  $(BITCOIN_CORE_H)
+  $(Itecoin_CORE_H)
 
 if USE_LIBEVENT
-libbitcoin_common_a_CPPFLAGS += $(EVENT_CFLAGS)
-libbitcoin_common_a_SOURCES += common/url.cpp
+libItecoin_common_a_CPPFLAGS += $(EVENT_CFLAGS)
+libItecoin_common_a_SOURCES += common/url.cpp
 endif
 #
 
 # util #
-libbitcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_util_a_SOURCES = \
+libItecoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+libItecoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -757,172 +757,172 @@ libbitcoin_util_a_SOURCES = \
   util/string.cpp \
   util/time.cpp \
   util/tokenpipe.cpp \
-  $(BITCOIN_CORE_H)
+  $(Itecoin_CORE_H)
 #
 
 # cli #
-libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_cli_a_SOURCES = \
+libItecoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+libItecoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoin_cli_a_SOURCES = \
   compat/stdin.h \
   compat/stdin.cpp \
   rpc/client.cpp \
-  $(BITCOIN_CORE_H)
+  $(Itecoin_CORE_H)
 
-nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libItecoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitcoind & bitcoin-node binaries #
-bitcoin_daemon_sources = bitcoind.cpp
-bitcoin_bin_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitcoin_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoin_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# Itecoind & Itecoin-node binaries #
+Itecoin_daemon_sources = Itecoind.cpp
+Itecoin_bin_cppflags = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+Itecoin_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
+Itecoin_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitcoin_daemon_sources += bitcoind-res.rc
+Itecoin_daemon_sources += Itecoind-res.rc
 endif
 
-bitcoin_bin_ldadd = \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
+Itecoin_bin_ldadd = \
+  $(LIBItecoin_WALLET) \
+  $(LIBItecoin_COMMON) \
+  $(LIBItecoin_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_ZMQ) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBItecoin_ZMQ) \
+  $(LIBItecoin_CONSENSUS) \
+  $(LIBItecoin_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bitcoin_bin_ldadd += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
+Itecoin_bin_ldadd += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
 
-bitcoind_SOURCES = $(bitcoin_daemon_sources) init/bitcoind.cpp
-bitcoind_CPPFLAGS = $(bitcoin_bin_cppflags)
-bitcoind_CXXFLAGS = $(bitcoin_bin_cxxflags)
-bitcoind_LDFLAGS = $(bitcoin_bin_ldflags)
-bitcoind_LDADD = $(LIBBITCOIN_NODE) $(bitcoin_bin_ldadd)
+Itecoind_SOURCES = $(Itecoin_daemon_sources) init/Itecoind.cpp
+Itecoind_CPPFLAGS = $(Itecoin_bin_cppflags)
+Itecoind_CXXFLAGS = $(Itecoin_bin_cxxflags)
+Itecoind_LDFLAGS = $(Itecoin_bin_ldflags)
+Itecoind_LDADD = $(LIBItecoin_NODE) $(Itecoin_bin_ldadd)
 
-bitcoin_node_SOURCES = $(bitcoin_daemon_sources) init/bitcoin-node.cpp
-bitcoin_node_CPPFLAGS = $(bitcoin_bin_cppflags)
-bitcoin_node_CXXFLAGS = $(bitcoin_bin_cxxflags)
-bitcoin_node_LDFLAGS = $(bitcoin_bin_ldflags)
-bitcoin_node_LDADD = $(LIBBITCOIN_NODE) $(bitcoin_bin_ldadd) $(LIBBITCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
+Itecoin_node_SOURCES = $(Itecoin_daemon_sources) init/Itecoin-node.cpp
+Itecoin_node_CPPFLAGS = $(Itecoin_bin_cppflags)
+Itecoin_node_CXXFLAGS = $(Itecoin_bin_cxxflags)
+Itecoin_node_LDFLAGS = $(Itecoin_bin_ldflags)
+Itecoin_node_LDADD = $(LIBItecoin_NODE) $(Itecoin_bin_ldadd) $(LIBItecoin_IPC) $(LIBMULTIPROCESS_LIBS)
 
-# bitcoin-cli binary #
-bitcoin_cli_SOURCES = bitcoin-cli.cpp
-bitcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-bitcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# Itecoin-cli binary #
+Itecoin_cli_SOURCES = Itecoin-cli.cpp
+Itecoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(EVENT_CFLAGS)
+Itecoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+Itecoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitcoin_cli_SOURCES += bitcoin-cli-res.rc
+Itecoin_cli_SOURCES += Itecoin-cli-res.rc
 endif
 
-bitcoin_cli_LDADD = \
-  $(LIBBITCOIN_CLI) \
+Itecoin_cli_LDADD = \
+  $(LIBItecoin_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CRYPTO)
+  $(LIBItecoin_COMMON) \
+  $(LIBItecoin_UTIL) \
+  $(LIBItecoin_CRYPTO)
 
-bitcoin_cli_LDADD += $(EVENT_LIBS)
+Itecoin_cli_LDADD += $(EVENT_LIBS)
 #
 
-# bitcoin-tx binary #
-bitcoin_tx_SOURCES = bitcoin-tx.cpp
-bitcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# Itecoin-tx binary #
+Itecoin_tx_SOURCES = Itecoin-tx.cpp
+Itecoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+Itecoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+Itecoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitcoin_tx_SOURCES += bitcoin-tx-res.rc
+Itecoin_tx_SOURCES += Itecoin-tx-res.rc
 endif
 
-bitcoin_tx_LDADD = \
+Itecoin_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBItecoin_COMMON) \
+  $(LIBItecoin_UTIL) \
+  $(LIBItecoin_CONSENSUS) \
+  $(LIBItecoin_CRYPTO) \
   $(LIBSECP256K1)
 #
 
-# bitcoin-wallet binary #
-bitcoin_wallet_SOURCES = bitcoin-wallet.cpp
-bitcoin_wallet_SOURCES += init/bitcoin-wallet.cpp
-bitcoin_wallet_CPPFLAGS = $(bitcoin_bin_cppflags)
-bitcoin_wallet_CXXFLAGS = $(bitcoin_bin_cxxflags)
-bitcoin_wallet_LDFLAGS = $(bitcoin_bin_ldflags)
-bitcoin_wallet_LDADD = \
-  $(LIBBITCOIN_WALLET_TOOL) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
+# Itecoin-wallet binary #
+Itecoin_wallet_SOURCES = Itecoin-wallet.cpp
+Itecoin_wallet_SOURCES += init/Itecoin-wallet.cpp
+Itecoin_wallet_CPPFLAGS = $(Itecoin_bin_cppflags)
+Itecoin_wallet_CXXFLAGS = $(Itecoin_bin_cxxflags)
+Itecoin_wallet_LDFLAGS = $(Itecoin_bin_ldflags)
+Itecoin_wallet_LDADD = \
+  $(LIBItecoin_WALLET_TOOL) \
+  $(LIBItecoin_WALLET) \
+  $(LIBItecoin_COMMON) \
+  $(LIBItecoin_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBItecoin_CONSENSUS) \
+  $(LIBItecoin_CRYPTO) \
   $(LIBSECP256K1) \
   $(BDB_LIBS) \
   $(SQLITE_LIBS)
 
 if TARGET_WINDOWS
-bitcoin_wallet_SOURCES += bitcoin-wallet-res.rc
+Itecoin_wallet_SOURCES += Itecoin-wallet-res.rc
 endif
 #
 
-# bitcoin-util binary #
-bitcoin_util_SOURCES = bitcoin-util.cpp
-bitcoin_util_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitcoin_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoin_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# Itecoin-util binary #
+Itecoin_util_SOURCES = Itecoin-util.cpp
+Itecoin_util_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+Itecoin_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+Itecoin_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitcoin_util_SOURCES += bitcoin-util-res.rc
+Itecoin_util_SOURCES += Itecoin-util-res.rc
 endif
 
-bitcoin_util_LDADD = \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
+Itecoin_util_LDADD = \
+  $(LIBItecoin_COMMON) \
+  $(LIBItecoin_UTIL) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBItecoin_CONSENSUS) \
+  $(LIBItecoin_CRYPTO) \
   $(LIBSECP256K1)
 #
 
-# bitcoin-chainstate binary #
-bitcoin_chainstate_SOURCES = bitcoin-chainstate.cpp
-bitcoin_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-bitcoin_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+# Itecoin-chainstate binary #
+Itecoin_chainstate_SOURCES = Itecoin-chainstate.cpp
+Itecoin_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES) $(BOOST_CPPFLAGS)
+Itecoin_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-bitcoin_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
-bitcoin_chainstate_LDADD = $(LIBBITCOINKERNEL)
+Itecoin_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+Itecoin_chainstate_LDADD = $(LIBItecoinKERNEL)
 
 # libtool is unable to calculate this indirect dependency, presumably because it's a subproject.
-# libsecp256k1 only needs to be linked in when libbitcoinkernel is static.
-bitcoin_chainstate_LDADD += $(LIBSECP256K1)
+# libsecp256k1 only needs to be linked in when libItecoinkernel is static.
+Itecoin_chainstate_LDADD += $(LIBSECP256K1)
 #
 
-# bitcoinkernel library #
-if BUILD_BITCOIN_KERNEL_LIB
-lib_LTLIBRARIES += $(LIBBITCOINKERNEL)
+# Itecoinkernel library #
+if BUILD_Itecoin_KERNEL_LIB
+lib_LTLIBRARIES += $(LIBItecoinKERNEL)
 
-libbitcoinkernel_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(PTHREAD_FLAGS)
-libbitcoinkernel_la_LIBADD = $(LIBBITCOIN_CRYPTO) $(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1)
-libbitcoinkernel_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
+libItecoinkernel_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(PTHREAD_FLAGS)
+libItecoinkernel_la_LIBADD = $(LIBItecoin_CRYPTO) $(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1)
+libItecoinkernel_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_Itecoin_INTERNAL $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS)
 
-# libbitcoinkernel requires default symbol visibility, explicitly specify that
+# libItecoinkernel requires default symbol visibility, explicitly specify that
 # here so that things still work even when user configures with
 #   --enable-reduce-exports
 #
 # Note this is a quick hack that will be removed as we incrementally define what
 # to export from the library.
-libbitcoinkernel_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fvisibility=default
+libItecoinkernel_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fvisibility=default
 
-# TODO: libbitcoinkernel is a work in progress consensus engine library, as more
+# TODO: libItecoinkernel is a work in progress consensus engine library, as more
 #       and more modules are decoupled from the consensus engine, this list will
 #       shrink to only those which are absolutely necessary.
-libbitcoinkernel_la_SOURCES = \
-  kernel/bitcoinkernel.cpp \
+libItecoinkernel_la_SOURCES = \
+  kernel/Itecoinkernel.cpp \
   arith_uint256.cpp \
   chain.cpp \
   clientversion.cpp \
@@ -1002,21 +1002,21 @@ libbitcoinkernel_la_SOURCES = \
 
 # Required for obj/build.h to be generated first.
 # More details: https://www.gnu.org/software/automake/manual/html_node/Built-Sources-Example.html
-libbitcoinkernel_la-clientversion.l$(OBJEXT): obj/build.h
-endif # BUILD_BITCOIN_KERNEL_LIB
+libItecoinkernel_la-clientversion.l$(OBJEXT): obj/build.h
+endif # BUILD_Itecoin_KERNEL_LIB
 #
 
-# bitcoinconsensus library #
-if BUILD_BITCOIN_LIBS
-lib_LTLIBRARIES += $(LIBBITCOINCONSENSUS)
+# Itecoinconsensus library #
+if BUILD_Itecoin_LIBS
+lib_LTLIBRARIES += $(LIBItecoinCONSENSUS)
 
-include_HEADERS = script/bitcoinconsensus.h
-libbitcoinconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitcoin_crypto_base_la_SOURCES) $(libbitcoin_consensus_a_SOURCES)
+include_HEADERS = script/Itecoinconsensus.h
+libItecoinconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libItecoin_crypto_base_la_SOURCES) $(libItecoin_consensus_a_SOURCES)
 
-libbitcoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libbitcoinconsensus_la_LIBADD = $(LIBSECP256K1)
-libbitcoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
-libbitcoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libItecoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libItecoinconsensus_la_LIBADD = $(LIBSECP256K1)
+libItecoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_Itecoin_INTERNAL
+libItecoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -1052,12 +1052,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/bitcoin-config.h: config/stamp-h1
+config/Itecoin-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/bitcoin-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/Itecoin-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/bitcoin-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bitcoin-config.h.in
+$(top_srcdir)/$(subdir)/config/Itecoin-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/Itecoin-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean
@@ -1080,19 +1080,19 @@ if HARDEN
 	$(AM_V_at) $(PYTHON) $(top_srcdir)/contrib/devtools/security-check.py $(bin_PROGRAMS)
 endif
 
-libbitcoin_ipc_mpgen_input = \
+libItecoin_ipc_mpgen_input = \
   ipc/capnp/echo.capnp \
   ipc/capnp/init.capnp
-EXTRA_DIST += $(libbitcoin_ipc_mpgen_input)
+EXTRA_DIST += $(libItecoin_ipc_mpgen_input)
 %.capnp:
 
 # Explicitly list dependencies on generated headers as described in
 # https://www.gnu.org/software/automake/manual/html_node/Built-Sources-Example.html#Recording-Dependencies-manually
-ipc/capnp/libbitcoin_ipc_a-protocol.$(OBJEXT): $(libbitcoin_ipc_mpgen_input:=.h)
+ipc/capnp/libItecoin_ipc_a-protocol.$(OBJEXT): $(libItecoin_ipc_mpgen_input:=.h)
 
 if BUILD_MULTIPROCESS
-LIBBITCOIN_IPC=libbitcoin_ipc.a
-libbitcoin_ipc_a_SOURCES = \
+LIBItecoin_IPC=libItecoin_ipc.a
+libItecoin_ipc_a_SOURCES = \
   ipc/capnp/context.h \
   ipc/capnp/init-types.h \
   ipc/capnp/protocol.cpp \
@@ -1103,20 +1103,20 @@ libbitcoin_ipc_a_SOURCES = \
   ipc/process.cpp \
   ipc/process.h \
   ipc/protocol.h
-libbitcoin_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
+libItecoin_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(Itecoin_INCLUDES)
+libItecoin_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
 
 include $(MPGEN_PREFIX)/include/mpgen.mk
-libbitcoin_ipc_mpgen_output = \
-  $(libbitcoin_ipc_mpgen_input:=.c++) \
-  $(libbitcoin_ipc_mpgen_input:=.h) \
-  $(libbitcoin_ipc_mpgen_input:=.proxy-client.c++) \
-  $(libbitcoin_ipc_mpgen_input:=.proxy-server.c++) \
-  $(libbitcoin_ipc_mpgen_input:=.proxy-types.c++) \
-  $(libbitcoin_ipc_mpgen_input:=.proxy-types.h) \
-  $(libbitcoin_ipc_mpgen_input:=.proxy.h)
-nodist_libbitcoin_ipc_a_SOURCES = $(libbitcoin_ipc_mpgen_output)
-CLEANFILES += $(libbitcoin_ipc_mpgen_output)
+libItecoin_ipc_mpgen_output = \
+  $(libItecoin_ipc_mpgen_input:=.c++) \
+  $(libItecoin_ipc_mpgen_input:=.h) \
+  $(libItecoin_ipc_mpgen_input:=.proxy-client.c++) \
+  $(libItecoin_ipc_mpgen_input:=.proxy-server.c++) \
+  $(libItecoin_ipc_mpgen_input:=.proxy-types.c++) \
+  $(libItecoin_ipc_mpgen_input:=.proxy-types.h) \
+  $(libItecoin_ipc_mpgen_input:=.proxy.h)
+nodist_libItecoin_ipc_a_SOURCES = $(libItecoin_ipc_mpgen_output)
+CLEANFILES += $(libItecoin_ipc_mpgen_output)
 endif
 
 %.raw.h: %.raw

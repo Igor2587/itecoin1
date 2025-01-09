@@ -1,9 +1,9 @@
-// Copyright (c) 2015-2022 The Bitcoin Core developers
+// Copyright (c) 2015-2022 The Itecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_SETUP_COMMON_H
-#define BITCOIN_TEST_UTIL_SETUP_COMMON_H
+#ifndef Itecoin_TEST_UTIL_SETUP_COMMON_H
+#define Itecoin_TEST_UTIL_SETUP_COMMON_H
 
 #include <common/args.h>
 #include <key.h>
@@ -210,4 +210,4 @@ private:
     const std::string m_reason;
 };
 
-#endif // BITCOIN_TEST_UTIL_SETUP_COMMON_H
+#endif // Itecoin_TEST_UTIL_SETUP_COMMON_H
